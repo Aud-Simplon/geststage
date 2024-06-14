@@ -6,7 +6,7 @@ function connexionBDD()
     {
         $options = array(
             PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION,
-            PDO::MYSQL_ATTR_SSL_CA => 'DigiCertGlobalRootCA.crt.pem' // Chemin vers le certificat RootCA de Azure
+            PDO::MYSQL_ATTR_SSL_CA => 'DigiCertGlobalRootCA.crt.(1)pem' // Chemin vers le certificat RootCA de Azure
         );
 
         $bdd = new PDO(
