@@ -11,7 +11,7 @@ function connexionBDD()
 
         $bdd = new PDO(
             'mysql:host=aud-geststage.mysql.database.azure.com;port=3306;dbname=bdd_geststages;charset=utf8',
-            'audrey@aud-geststage',
+            'audrey',
             'Simplon2024!',
             $options
         );
