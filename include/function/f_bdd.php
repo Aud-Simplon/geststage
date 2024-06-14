@@ -1,19 +1,28 @@
-﻿<?php
+<?php
 
 function connexionBDD()
 {
-	try
-	{
-            $bdd = new PDO('mysql:host=aud-bdd-geststage.mysql.database.azure.com;port=3306;dbname=bdd_geststages;charset=utf8', 'audrey', 'Simplon2024!', array(PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION));
-            return $bdd;
-            return $bdd;
-	}
-	catch(Exception $e)
-	{
-		$pdo_error = $e->getMessage();
-                return false;
-	}
-    
+    try
+    {
+        $options = array(
+            PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION,
+            PDO::MYSQL_ATTR_SSL_CA => 'DigiCertGlobalRootCA.crt.pem' // Chemin vers le certificat RootCA de Azure
+        );
+
+        $bdd = new PDO(
+            'mysql:host=aud-geststage.mysql.database.azure.com;port=3306;dbname=bdd_geststages;charset=utf8',
+            'audrey@aud-geststage',
+            'Simplon2024!',
+            $options
+        );
+
+        return $bdd;
+    }
+    catch(Exception $e)
+    {
+        $pdo_error = $e->getMessage();
+        return false;
+    }
 }
 
 ?>
